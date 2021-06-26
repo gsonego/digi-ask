@@ -18,7 +18,7 @@ Caso haja erro ao executar comandos no Powershell
 
 ### Criar app
 
-`npx create-react-app letmeask --template typescript`
+`npx create-react-app digi-ask --template typescript`
 
 ### Adicionar pacote de manipulação de classes css
 
