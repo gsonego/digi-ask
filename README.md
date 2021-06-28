@@ -29,7 +29,6 @@ Caso haja erro ao executar comandos no Powershell
 * public\*.* exceto index.html
 * scr\App.css, App.test.tsx, Index.css, logo.svg, reportWebVitals.ts, setupTests.ts
 
-
 ### Iniciando aplicação para desenvolvimento
 `yarn install` ou
 `npm install`
@@ -38,8 +37,16 @@ Caso haja erro ao executar comandos no Powershell
 `yarn start`
 `npm run start` ??
 
-### Adicionar pacote de manipulação de classes css
+### Adicionando Firebase
+`yarn add firebase`
 
+### Adicionando o SASS
+`yarn add node-sass@^5.0.0`
+
+### Adicionando o React Router
+`yarn add react-router-dom`
+
+### Adicionar pacote de manipulação de classes css
 `yarn add classnames`
 
 
