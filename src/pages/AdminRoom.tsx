@@ -1,15 +1,15 @@
 import { useHistory, useParams } from 'react-router-dom';
 import { database } from '../services/firebase';
 
-import logoImg from '../assets/images/logo.svg';
-import deleteImg from '../assets/images/delete.svg';
-import checkImg from '../assets/images/check.svg';
-import answerImg from '../assets/images/answer.svg';
-
 import { useRoom } from '../hooks/useRoom';
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
-import { Question } from '../components/Question/index';
+import { Question } from '../components/Question';
+import { Logo } from '../components/Logo';
+
+import deleteImg from '../assets/images/delete.svg';
+import checkImg from '../assets/images/check.svg';
+import answerImg from '../assets/images/answer.svg';
 
 import '../styles/room.scss';
 
@@ -32,7 +32,7 @@ export function AdminRoom() {
   }
 
   async function handleDeleteQuestion(questionId: string){
-    if (window.confirm("Tem certeza que deseja excluir esta pergunta?")){
+    if (window.confirm("Are you sure you want to delete this question ?")){
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
     }
   }
@@ -53,18 +53,18 @@ export function AdminRoom() {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Digi Ask" />
+          <Logo></Logo>
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined onClick={handleEndRoom}>Encerrar Sala</Button>
+            <Button isOutlined onClick={handleEndRoom}>Close Room</Button>
           </div>
         </div>
       </header>
 
       <main className="content">
         <div className="room-title">
-          <h1>Sala {title}</h1>
-          { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
+          <h1>Room: {title}</h1>
+          { questions.length > 0 && <span>{questions.length} { questions.length === 1 ? 'question' : 'questions' }</span> }
         </div>
 
         <div className="question-list">
@@ -85,14 +85,14 @@ export function AdminRoom() {
                   type="button"
                   onClick={() => handleQuestionAsAsAnswered(question.id)}
                   >
-                  <img src={checkImg} alt="Marcar pergunta como respondida" />
+                  <img src={checkImg} alt="Mark as answered" />
                   </button>
 
                   <button
                   type="button"
                   onClick={() => handleHighlightQuestion(question.id)}
                   >
-                  <img src={answerImg} alt="Dar destaque à pergunta" />
+                  <img src={answerImg} alt="Highlight question" />
                   </button>
                 </>
                 )}
@@ -101,7 +101,7 @@ export function AdminRoom() {
                     type="button"
                     onClick={() => handleDeleteQuestion(question.id)}
                   >
-                    <img src={deleteImg} alt="Remover pergunta" />
+                    <img src={deleteImg} alt="Delete question" />
                   </button>
                 </Question>
               )  

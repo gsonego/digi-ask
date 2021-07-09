@@ -6,9 +6,8 @@ import { database } from '../services/firebase';
 import { useRoom } from '../hooks/useRoom';
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
-import { Question } from '../components/Question/index';
-
-import logoImg from '../assets/images/logo.svg';
+import { Question } from '../components/Question';
+import { Logo } from '../components/Logo';
 
 import '../styles/room.scss';
 
@@ -63,20 +62,20 @@ export function Room() {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Digi Ask" />
+          <Logo></Logo>
           <RoomCode code={roomId} />
         </div>
       </header>
 
       <main className="content">
         <div className="room-title">
-          <h1>Sala {title}</h1>
-          { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
+          <h1>Room: {title}</h1>
+          { questions.length > 0 && <span>{questions.length} { questions.length === 1 ? 'question' : 'questions'}</span> }
         </div>
 
         <form onSubmit={handleSendQuestion}>
           <textarea  
-            placeholder="O que você quer perguntar?"
+            placeholder="What would you like to ask ?"
             onChange={event => setNewQuestion(event.target.value)}
             value={newQuestion}
           />
@@ -88,9 +87,9 @@ export function Room() {
                 <span>{user.name}</span> 
               </div>
             ) : (
-              <span>Para enviar uma pergunta, <button>faça seu login</button>.</span>
+              <span><button>Log in</button> to ask a question.</span>
             ) }
-            <Button type="submit" disabled={!user}>Enviar pergunta</Button>
+            <Button type="submit" disabled={!user}>Send question</Button>
           </div>
         </form>
 
