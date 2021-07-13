@@ -2,6 +2,8 @@
 
 https://digi-ask.web.app/
 
+[![Manual workflow](https://github.com/gsonego/digi-ask/actions/workflows/firebase-manual-deploy.yml/badge.svg)](https://github.com/gsonego/digi-ask/actions/workflows/firebase-manual-deploy.yml)
+
 ## Node modules
 * node 
 * npm
